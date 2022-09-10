@@ -63,7 +63,7 @@ function buildCharts(sample) {
     let samples = data.samples;
 
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    let resultsArray = samples / filter(sampleObj => sampleObj.id == sample);
+    let resultsArray = samples.filter(sampleObj => sampleObj.id ==sample);
 
     //  5. Create a variable that holds the first sample in the array.
     let result = resultsArray[0];
@@ -79,12 +79,19 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = otu_ids.slice(0, 10).map(otuId => 'OTU ${otuID}').reverse();
+    var yticks = otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse();
 
     console.log(yticks);
 
     // 8. Create the trace for the bar chart. 
     var barData = [
+      {
+        y: yticks,
+        x: sample_values,
+        text: otu_labels,
+        type: "bar",
+        orientation: "h",
+      }
 
     ];
     // 9. Create the layout for the bar chart. 
@@ -92,6 +99,7 @@ function buildCharts(sample) {
 
     };
     // 10. Use Plotly to plot the data with the layout. 
+    Plotly.newPlot("bar", barData, barLayout);
 
   });
 }
