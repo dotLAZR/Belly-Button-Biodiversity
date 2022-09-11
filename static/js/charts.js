@@ -67,7 +67,7 @@ function buildCharts(sample) {
 
     //  5. Create a variable that holds the first sample in the array.
     let result = resultsArray[0];
-    console.log(result);
+    // console.log(result);
 
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
@@ -96,6 +96,8 @@ function buildCharts(sample) {
     ];
     // 9. Create the layout for the bar chart. 
     var barLayout = {
+      title: "Top Ten Bacteria Samples",
+
 
     };
     // 10. Use Plotly to plot the data with the layout. 
